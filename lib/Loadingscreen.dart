@@ -8,8 +8,8 @@ import 'location.dart';
 
 
 class Loadingscreen extends StatefulWidget {
-   const Loadingscreen({required var this.data,Key? key}) : super(key: key);
-final dynamic data;
+ Loadingscreen({required dynamic this.data,Key? key}) : super(key: key);
+dynamic data;
 
   @override
   State<Loadingscreen> createState() => _LoadingscreenState();
@@ -18,7 +18,6 @@ final dynamic data;
 class _LoadingscreenState extends State<Loadingscreen> {
 
 
- dynamic data;
  dynamic temp;
  dynamic city;
  dynamic id;
@@ -82,7 +81,7 @@ class _LoadingscreenState extends State<Loadingscreen> {
                           network Network = network();
 
 
-                          data=await Network.gettempbylocation(long: long, lat: lat);
+                          dynamic data=await Network.gettempbylocation(long: long, lat: lat);
                           updateui(data);
                         },
                       ),
@@ -102,7 +101,7 @@ class _LoadingscreenState extends State<Loadingscreen> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => cityweather(data: data,)));
+                                  builder: (context) => cityweather(data: widget.data,)));
                         },
                       ),
                       Text("Find",style: TextStyle(fontSize: 20),)

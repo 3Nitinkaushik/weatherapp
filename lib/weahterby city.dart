@@ -4,7 +4,7 @@ import 'weathercode.dart';
 import 'network.dart';
 class cityweather extends StatefulWidget {
 
-   const cityweather({required var this.data,Key? key}) : super(key: key);
+   const cityweather({required this.data,Key? key}) : super(key: key);
    final dynamic data;
   @override
   State<cityweather> createState() => _cityweatherState();
@@ -12,7 +12,6 @@ class cityweather extends StatefulWidget {
 
 class _cityweatherState extends State<cityweather> {
 
-  dynamic data;
   dynamic temp;
   dynamic city;
   dynamic id;
@@ -59,12 +58,20 @@ void updateui(var data){
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  topIcon(
-                    icon: Icons.near_me,
-                    align: Alignment.topLeft,
-                    onpressed: () {
-                      Navigator.pop(context);
-                    },
+                  Column(
+                    children: [
+                      topIcon(
+                        icon: Icons.near_me,
+                        align: Alignment.topLeft,
+                        onpressed: () {
+                          Navigator.pop(context);
+                        },),
+                        Padding(
+                        padding: const EdgeInsets.only(left:8.0),
+                        child: Text("Near me",style: TextStyle(fontSize: 20),),
+                      ),
+
+                    ],
                   )
                 ],
               ),
@@ -89,7 +96,7 @@ void updateui(var data){
 
                     network Network = network();
 
-                    data=await Network.gettempbycity(city: text);
+                    dynamic data=await Network.gettempbycity(city: text);
 updateui(data);
                   }),
               ),
@@ -110,7 +117,7 @@ updateui(data);
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 40.0, left: 10, bottom: 65.0, right: 20),
+                    top: 10.0, left: 10, right: 20),
                 child: Text(
                   "Bring a $condition just in case in $city",
                   textAlign: TextAlign.right,
