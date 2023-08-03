@@ -68,7 +68,9 @@ Future<Position> determinePosition(context) async {
 
   // When we reach here, permissions are granted and we can
   // continue accessing the position of the device.
-  return await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.low);
+  final position= await Geolocator.getCurrentPosition(forceAndroidLocationManager: true,
+    desiredAccuracy: LocationAccuracy.best);
+
+  return position;
 }
 

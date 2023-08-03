@@ -21,7 +21,7 @@ class network {
 
   }
   Future gettempbycity({required String city}) async{
-    var url=Uri.http('api.openweathermap.org','/data/2.5/weather',{'q':'$city','units':'metric','appid':'6a1efbda172d2c1f6cfa96e94bd0fded'});
+    var url=Uri.https('api.openweathermap.org','/data/2.5/weather',{'q':'$city','units':'metric','appid':'6a1efbda172d2c1f6cfa96e94bd0fded'});
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var jsonResponse = convert.jsonDecode(response.body) ;

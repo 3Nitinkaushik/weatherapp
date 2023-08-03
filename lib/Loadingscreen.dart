@@ -8,7 +8,7 @@ import 'location.dart';
 
 
 class Loadingscreen extends StatefulWidget {
- Loadingscreen({required dynamic this.data,Key? key}) : super(key: key);
+ Loadingscreen({required this.data,Key? key}) : super(key: key);
 dynamic data;
 
   @override
